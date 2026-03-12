@@ -134,6 +134,13 @@ button:hover {
     background: var(--fg);
     color: var(--bg);
 }
+.markedButton:hover {
+    background-color: var(--fg) !important;
+}
+.markedButton {
+    background-color: var(--accent) !important;
+    color: var(--bg);
+}
 
 a {
     -webkit-box-orient: vertical;
@@ -186,7 +193,7 @@ h1 {
     margin: 0;
     font-size: 3.5rem;
     font-weight: bold;
-    letter-spacing: -0.1em;
+    letter-spacing: -0.03em;
     text-transform: uppercase;
 }
 h2 {

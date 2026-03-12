@@ -12,6 +12,9 @@ export default function History() {
   function handleDelete(entry) {
     setIsDeleting(entry);
   }
+  function handleBack() {
+    setIsDeleting(false);
+  }
   function handleConfirm(entry) {
     remove(entry)
     setIsDeleting(false);
@@ -27,13 +30,14 @@ export default function History() {
             <li key={entry}>
               <a target="_blank" href={entry}>{entry}</a>
               <section>
-                <button onClick={() => alert("this will show the qr")}>qr</button>
-                {isDeleting !== entry && (
+                {isDeleting !== entry && (<>
+                  <button onClick={() => alert("this will show the qr")}>qr</button>
                   <button onClick={() => handleDelete(entry)}>{t('history.delete')}</button>
-                )}
-                {isDeleting === entry && (
-                  <button onClick={() => handleConfirm(entry)}>{t('history.confirm')}</button>
-                )}
+                </>)}
+                {isDeleting === entry && (<>
+                  <button onClick={handleBack}>{t('history.back')}</button>
+                  <button className="markedButton" onClick={() => handleConfirm(entry)}>{t('history.confirm')}</button>
+                </>)}
               </section>
             </li>
           )}
