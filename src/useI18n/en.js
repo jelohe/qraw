@@ -9,6 +9,8 @@ export default {
   "header.title": "QRaw",
 
   "history.subtitle": "History",
+  "history.delete": "Delete",
+  "history.confirm": "Confirm",
 
   "scan.scan": "Scan",
   "scan.discard": "Discard",

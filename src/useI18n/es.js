@@ -7,6 +7,8 @@ export default {
   "footer.upload": "Subir",
 
   "header.title": "QRaw",
+  "history.delete": "Borrar",
+  "history.confirm": "Confirmar",
 
   "history.subtitle": "Historial",
 
