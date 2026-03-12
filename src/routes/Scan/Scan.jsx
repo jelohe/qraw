@@ -20,7 +20,6 @@ export default function Scan() {
   const handleDiscard = () => setResult(null);
   const handleOpen = () => {
     add(result);
-    setResult(null);
     window.open(result, "_blank");
   }
 
