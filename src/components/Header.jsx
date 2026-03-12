@@ -1,12 +1,14 @@
 import useI18n from '@/useI18n';
+import Footer from '@/components/Footer';
 
 export default function Header() {
   const { t, LangSelector, lang, setLang } = useI18n();
 
-  return (
+  return (<>
     <header>
       <h1>{t("header.title")}</h1>
       <LangSelector lang={lang} setLang={setLang} />
     </header>
-  );
+    <Footer />
+  </>);
 }

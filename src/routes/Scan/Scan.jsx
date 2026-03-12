@@ -3,12 +3,11 @@ import useI18n from '@/useI18n';
 import useHistory from '@/useHistory';
 import Scanner from './Scanner';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function Scan() {
   const { t } = useI18n();
   const { add } = useHistory();
-  const [result, setResult] = useState(null);
+  const [result, setResult] = useState();
 
   function handleScan(uris) {
     if (result) return;
@@ -46,7 +45,6 @@ export default function Scan() {
           </>)}
         </section>
       </main>
-      <Footer />
     </>
   );
 }

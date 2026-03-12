@@ -151,9 +151,6 @@ a {
     overflow: hidden;
     text-decoration: underline;
 }
-a:hover {
-    font-weight: bold;
-}
 a.active {
     cursor: default;
     text-decoration: none;

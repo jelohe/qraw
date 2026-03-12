@@ -1,6 +1,5 @@
 import useI18n from '@/useI18n';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function Upload() {
   const { t } = useI18n();
@@ -21,7 +20,6 @@ export default function Upload() {
           It will also show a button to open and a button to discard, like in the Scan screen.
         </p>
       </main>
-      <Footer />
     </>
   );
 }

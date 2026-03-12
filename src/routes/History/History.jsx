@@ -2,7 +2,6 @@ import { useState } from 'react';
 import useI18n from '@/useI18n';
 import useHistory from '@/useHistory';
 import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export default function History() {
   const { t } = useI18n();
@@ -43,7 +42,6 @@ export default function History() {
           )}
         </ul>
       </main>
-      <Footer />
     </>
   );
 }

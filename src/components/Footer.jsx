@@ -1,7 +1,7 @@
 import { NavLink } from "react-router";
 import useI18n from '@/useI18n';
 
-export default function Header() {
+export default function Footer() {
   const { t } = useI18n();
 
   return (
