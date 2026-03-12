@@ -13,6 +13,7 @@ export default function Upload() {
         <input type="file" />
         <br />
         <br />
+        <hr />
         <h3>TBD</h3>
         <p>
           In the future, this will display the qr and store it in history.

@@ -31,7 +31,6 @@ const LangSelector = function({ lang, setLang }) {
     >
       <option value="en">en</option>
       <option value="es">es</option>
-      <option value="tok">tok</option>
     </select>
   );
 }
