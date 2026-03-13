@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import camera from './camera';
 
-const defaultOnScan = () => {};
-export default function Scanner({ onScan = defaultOnScan, Loading, Error }) {
+const noop = () => {};
+export default function Scanner({ onScan = noop, onError = noop, Loading }) {
   const videoEl = useRef(null);
   const pollRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -22,6 +22,7 @@ export default function Scanner({ onScan = defaultOnScan, Loading, Error }) {
       startPolling();
     }).catch(() => {
       setIsLoading(false);
+      onError();
       setIsAvailable(false)
     });
 
@@ -32,15 +33,13 @@ export default function Scanner({ onScan = defaultOnScan, Loading, Error }) {
       el.srcObject.getTracks().forEach(t => t.stop());
       el.srcObject = null;
     }
-  }, [onScan, videoEl]);
+  }, [onScan, onError, videoEl]);
 
-  const isUnavailable = !isLoading && !isAvailable;
   const isReady = !isLoading && isAvailable;
 
   return (
     <>
       {isLoading && <Loading />}
-      {isUnavailable && <Error />}
       <video 
         className={`${isReady ? '': 'is-hidden'}`}
         ref={videoEl}

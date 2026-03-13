@@ -1,25 +1,29 @@
 export default {
   "create.subtitle": "Create a QR",
+  "create.placeholder": "Your URL ...",
 
-  "footer.create": "Create",
-  "footer.history": "History",
-  "footer.scan": "Scan",
-  "footer.upload": "Upload",
+  "nav.create": "Create",
+  "nav.history": "History",
+  "nav.scan": "Scan",
+  "nav.upload": "Upload",
 
   "header.title": "QRaw",
 
   "history.back": "Back",
   "history.delete": "Delete",
   "history.confirm": "Confirm",
-  "history.subtitle": "History",
+  "history.subtitle": "QR History",
 
-  "scan.scan": "Scan",
+  "scan.camera.preview": "Open camera to start scanning",
+  "scan.open.cam": "Open camera",
+  "scan.close.cam": "Close camera",
   "scan.discard": "Discard",
-  "scan.error": "Error accessing your camera",
+  "scan.error": "Error accessing your camera. Check your permissions or upload an image",
   "scan.found": "Found",
   "scan.open": "Open",
+  "scan.retry": "Retry",
   "scan.loading": "Accesing camera",
-  "scan.subtitle": "Scanner",
+  "scan.subtitle": "Scan a QR",
 
   "upload.subtitle": "Upload QR Image",
 }

@@ -8,8 +8,8 @@ export default function Create() {
     <>
       <Header />
       <main>
-        <h2>CREATE</h2>
-        <input type="text" placeholder="Your url ..." />
+        <h2>{t("create.subtitle")}</h2>
+        <input type="text" placeholder={t("create.placeholder")} />
         <br />
         <br />
         <button>Create</button>

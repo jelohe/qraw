@@ -1,5 +1,5 @@
 import useI18n from '@/useI18n';
-import Footer from '@/components/Footer';
+import Nav from '@/components/Nav';
 
 export default function Header() {
   const { t, LangSelector, lang, setLang } = useI18n();
@@ -9,6 +9,6 @@ export default function Header() {
       <h1>{t("header.title")}</h1>
       <LangSelector lang={lang} setLang={setLang} />
     </header>
-    <Footer />
+    <Nav />
   </>);
 }

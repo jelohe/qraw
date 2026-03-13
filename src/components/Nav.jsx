@@ -1,26 +1,26 @@
 import { NavLink } from "react-router";
 import useI18n from '@/useI18n';
 
-export default function Footer() {
+export default function Nav() {
   const { t } = useI18n();
 
   return (
-    <footer>
+    <nav>
       <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('footer.scan')}
+        {t('nav.scan')}
       </NavLink>
 
       <NavLink to="/upload" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('footer.upload')}
+        {t('nav.upload')}
       </NavLink>
 
       <NavLink to="/create" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('footer.create')}
+        {t('nav.create')}
       </NavLink>
 
       <NavLink to="/history" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('footer.history')}
+        {t('nav.history')}
       </NavLink>
-    </footer>
+    </nav>
   );
 }

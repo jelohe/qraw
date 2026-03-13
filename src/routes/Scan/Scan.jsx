@@ -7,20 +7,34 @@ import Header from '@/components/Header';
 export default function Scan() {
   const { t } = useI18n();
   const { add } = useHistory();
-  const [result, setResult] = useState();
+  const wadus = "https://key0.app";
+  const [result, setResult] = useState(wadus);
+  const STATE = {
+    IDLE: 'idle',
+    SCAN: 'scanning',
+    ERROR: 'error',
+    FOUND: 'found',
+  }
+  const [state, setState] = useState(STATE.IDLE);
 
   function handleScan(uris) {
-    if (result) return;
     if (!uris || uris.length <= 0) return;
 
-    const found = uris[0].rawValue;
-    setResult(found);
+    const uri = uris[0].rawValue;
+    add(uri);
+    setResult(uri);
+    setState(STATE.FOUND);
   };
-  const handleDiscard = () => setResult(null);
+  const handleDiscard = () => {
+    setResult();
+    setState(STATE.SCAN);
+  }
   const handleOpen = () => {
-    add(result);
     window.open(result, "_blank");
   }
+  const handleError = () => setState(STATE.ERROR);
+  const handleOpenCam = () => setState(STATE.SCAN);
+  const handleCloseCam = () => setState(STATE.IDLE);
 
   return (
     <>
@@ -28,21 +42,32 @@ export default function Scan() {
       <main>
         <h2>{t("scan.subtitle")}</h2>
         <div className="scanner">
-          {result && (
-            <Found display={result} />
-          )}
-          {!result && (
-            <Scanner Loading={Loading} Error={Error} onScan={handleScan} />
+          {(state === STATE.ERROR) && <Error />}
+          {(state === STATE.FOUND) && <Found display={result} />}
+          {(state === STATE.IDLE) && <span>{t("scan.camera.preview")}</span>}
+          {(state === STATE.SCAN) && (
+            <Scanner
+              onError={handleError}
+              Loading={Loading}
+              Error={Error}
+              onScan={handleScan}
+            />
           )}
         </div>
         <section>
-          {!result && (
-            <button>{t("scan.scan")}</button>
+          {(state === STATE.ERROR) && <button onClick={handleOpenCam}>{t("scan.retry")}</button>}
+          {(state === STATE.FOUND) && (
+            <>
+              <button onClick={handleDiscard}>{t("scan.discard")}</button>
+              <button onClick={handleOpen}>{t("scan.open")}</button>
+            </>
           )}
-          {result && (<>
-            <button onClick={handleDiscard}>{t("scan.discard")}</button>
-            <button onClick={handleOpen}>{t("scan.open")}</button>
-          </>)}
+          {(state === STATE.IDLE) && (
+            <button onClick={handleOpenCam}>{t("scan.open.cam")}</button>
+          )}
+          {(state === STATE.SCAN) && (
+            <button onClick={handleCloseCam}>{t("scan.close.cam")}</button>
+          )}
         </section>
       </main>
     </>
