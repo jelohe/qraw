@@ -6,21 +6,10 @@ export default function Nav() {
 
   return (
     <nav>
-      <NavLink to="/" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('nav.scan')}
-      </NavLink>
-
-      <NavLink to="/upload" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('nav.upload')}
-      </NavLink>
-
-      <NavLink to="/create" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('nav.create')}
-      </NavLink>
-
-      <NavLink to="/history" className={({ isActive }) => isActive ? "active" : ""}>
-        {t('nav.history')}
-      </NavLink>
+      <NavLink to="/">{t('nav.scan')}</NavLink>
+      <NavLink to="/upload">{t('nav.upload')}</NavLink>
+      <NavLink to="/create">{t('nav.create')}</NavLink>
+      <NavLink to="/history">{t('nav.history')}</NavLink>
     </nav>
   );
 }

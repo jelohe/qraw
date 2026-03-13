@@ -14,7 +14,7 @@ export default {
   "history.confirm": "Confirm",
   "history.subtitle": "QR History",
 
-  "scan.camera.preview": "Open camera to start scanning",
+  "scan.camera.preview": "Tap to start",
   "scan.open.cam": "Open camera",
   "scan.close.cam": "Close camera",
   "scan.discard": "Discard",

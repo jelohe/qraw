@@ -44,7 +44,9 @@ export default function Scan() {
         <div className="scanner">
           {(state === STATE.ERROR) && <Error />}
           {(state === STATE.FOUND) && <Found display={result} />}
-          {(state === STATE.IDLE) && <span>{t("scan.camera.preview")}</span>}
+          {(state === STATE.IDLE) &&
+            <span onClick={handleOpenCam}>{t("scan.camera.preview")}</span>
+          }
           {(state === STATE.SCAN) && (
             <Scanner
               onError={handleError}
@@ -61,9 +63,6 @@ export default function Scan() {
               <button onClick={handleDiscard}>{t("scan.discard")}</button>
               <button onClick={handleOpen}>{t("scan.open")}</button>
             </>
-          )}
-          {(state === STATE.IDLE) && (
-            <button onClick={handleOpenCam}>{t("scan.open.cam")}</button>
           )}
           {(state === STATE.SCAN) && (
             <button onClick={handleCloseCam}>{t("scan.close.cam")}</button>

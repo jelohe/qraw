@@ -10,11 +10,11 @@
 }
 
 [data-theme="dark"] {
-    --bg: #0b0b0b;
-    --bg-dark: #222;
-    --fg: #f5f5f5;
-    --accent: #00ffe1;
-    --accent-2: #afafef;
+    --bg: black;
+    --bg-dark: gray;
+    --fg: white;
+    --accent: red;
+    --accent-2: green;
     --border-color: var(--bg-dark);
     --border: 3px solid var(--border-color);
 }
@@ -50,36 +50,58 @@ body {
     height: 100dvh;
     overflow-x: hidden;
     width: 100%;
+    padding: .5em;
 }
 
 .scanner {
-    background: repeating-linear-gradient(
-      45deg,
-      transparent,
-      transparent 10px,
-      rgba(0,0,0,0.05) 10px,
-      rgba(0,0,0,0.05) 20px
-    );
+    aspect-ratio: 1;
     align-items: center;
-    background-color: var(--bg-dark);
     border: var(--border);
     display: flex;
     flex-direction: column;
     gap: 2em;
-    height: 20em;
     justify-content: center;
     margin-bottom: 14px;
-    max-height: 22em;
-    min-height: 22em;
     overflow: hidden;
     padding: 14px;
     position: relative;
     text-align: center;
     color: var(--fg);
     font-size: 14px;
+    font-weight: 600;
     letter-spacing: .12em;
     text-transform: uppercase;
 }
+.scanner > span {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.scanner::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,0,0,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.05) 1px, transparent 1px);
+  background-size:26px 26px;
+  pointer-events:none;
+}
+/* .scanner::after { */
+/*   content: ""; */
+/*   position: absolute; */
+/*   left: 0; */
+/*   right: 0; */
+/*   height: 2px; */
+/*   background: var(--bg-dark); */
+/*   animation: scan 2.5s linear infinite; */
+/* } */
+/* @keyframes scan { */
+/*   from { top: 0; } */
+/*   to { top: 100%; } */
+/* } */
 
 .is-hidden {
     display: none;
@@ -139,6 +161,7 @@ main {
 
 button {
     border: var(--border);
+    background-color: var(--bg);
     color: var(--black);
     cursor: pointer;
     font-family: inherit;
@@ -209,7 +232,7 @@ select:focus {
 
 h1 {
     margin: 0;
-    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    font-size: clamp(2rem, 8vw, 3rem);
     font-weight: 900;
     letter-spacing: -0.03em;
     text-transform: uppercase;
