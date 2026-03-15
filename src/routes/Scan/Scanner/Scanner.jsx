@@ -11,7 +11,12 @@ export default function Scanner({ onScan = noop, onError = noop, Loading }) {
   useEffect(() => {
     const el = videoEl.current;
     function poll() {
-      camera.scan(el).then(onScan);
+      camera.scan(el).then(uris => {
+        if (!uris || uris.length <= 0) return;
+        setIsAvailable(false)
+        clearInterval(pollRef.current);
+        onScan(uris);
+      });
     }
     function startPolling() {
       pollRef.current = setInterval(poll, 250);

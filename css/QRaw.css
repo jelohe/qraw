@@ -50,7 +50,6 @@ body {
     height: 100dvh;
     overflow-x: hidden;
     width: 100%;
-    padding: .5em;
 }
 
 .scanner {
@@ -110,6 +109,7 @@ body {
 header {
     align-items: center;
     border: var(--border);
+    border-top: 0;
     display: flex;
     flex: 0 0 auto;
     justify-content: space-between;
@@ -150,7 +150,6 @@ p {
 }
 
 main {
-    border-bottom: var(--border);
     border-left: var(--border);
     border-right: var(--border);
     flex: 1 1 auto;

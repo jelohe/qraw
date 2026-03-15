@@ -23,7 +23,7 @@ function open(el) {
 }
 
 function scan(el) {
-  const config = { formats: ["qr_code"], };
+  const config = {};
   const barcodeDetector = new BarcodeDetector(config);
   return barcodeDetector.detect(el);
 }
