@@ -1,22 +1,50 @@
 import useI18n from '@/useI18n';
+import useHistory from '@/useHistory';
+import { useState, useRef } from 'react';
 import Header from '@/components/Header';
+import QRCode from 'react-qr-code';
 
 export default function Create() {
+  const inputRef = useRef(null);
+  const [data, setData] = useState(null);
+  const { add } = useHistory();
   const { t } = useI18n();
+
+  function handleCreate() {
+    const createdData = inputRef.current.value;
+    setData(createdData);
+    add(createdData);
+  }
+
+  function handleDiscard() {
+    setData(null);
+  }
 
   return (
     <>
       <Header />
       <main>
         <h2>{t("create.subtitle")}</h2>
-        <input type="text" placeholder={t("create.placeholder")} />
+        <input ref={inputRef} type="text" placeholder={t("create.placeholder")} />
+        {data && (
+          <>
+            <section>
+              <QRCode value={data} />
+            </section>
+            <br />
+          </>
+        )}
         <section>
-          <button>Create</button>
+          {!data && (
+            <button onClick={handleCreate}>{t("create.create")}</button>
+          )}
+          {data && (
+            <button onClick={handleDiscard}>{t("create.discard")}</button>
+          )}
         </section>
         <br />
         <hr />
-        <h3>TBD</h3>
-        <p>Here you will be able to create a QR writing or pasting a url (or any data, really)</p>
+        <p>{t("create.help")}</p>
       </main>
     </>
   );

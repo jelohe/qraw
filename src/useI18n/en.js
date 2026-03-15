@@ -1,6 +1,9 @@
 export default {
   "create.subtitle": "Create a QR",
-  "create.placeholder": "Your URL ...",
+  "create.placeholder": "Data to encode ...",
+  "create.create": "Create",
+  "create.discard": "Discard",
+  "create.help": "Generate a QR containing an URL or Raw Data.",
 
   "nav.create": "Create",
   "nav.history": "History",

@@ -268,6 +268,9 @@ mark {
   padding: 16px;
   text-align: center;
 }
+section > svg {
+    width:100%;
+}
 
 .detected-box h2 {
   margin: 0 0 12px 0;
