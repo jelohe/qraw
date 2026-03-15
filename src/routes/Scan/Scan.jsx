@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import useI18n from '@/useI18n';
 import useHistory from '@/useHistory';
-import Scanner from './Scanner';
+import Scanner from '@/components/Scanner';
 import Header from '@/components/Header';
 
 export default function Scan() {
@@ -80,7 +80,12 @@ function Loading() {
 
 function Error() {
   const { t } = useI18n();
-  return (<span><mark>{t("scan.error")}</mark></span>);
+  return (
+    <>
+      <mark>{t("scan.error1")}</mark>
+      <mark>{t("scan.error2")}</mark>
+    </>
+  );
 }
 
 function Found({ display }) {

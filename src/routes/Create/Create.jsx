@@ -10,10 +10,9 @@ export default function Create() {
       <main>
         <h2>{t("create.subtitle")}</h2>
         <input type="text" placeholder={t("create.placeholder")} />
-        <br />
-        <br />
-        <button>Create</button>
-        <br />
+        <section>
+          <button>Create</button>
+        </section>
         <br />
         <hr />
         <h3>TBD</h3>

@@ -30,7 +30,6 @@ export default function History() {
               <a target="_blank" href={entry}>{entry}</a>
               <section>
                 {isDeleting !== entry && (<>
-                  <button onClick={() => alert("this will show the qr")}>qr</button>
                   <button onClick={() => handleDelete(entry)}>{t('history.delete')}</button>
                 </>)}
                 {isDeleting === entry && (<>
