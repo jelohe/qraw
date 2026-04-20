@@ -1,14 +1,14 @@
 export default {
   "create.subtitle": "Create a QR",
-  "create.placeholder": "Data to encode ...",
+  "create.placeholder": "https://www.example.com",
   "create.create": "Create",
   "create.discard": "Discard",
-  "create.help": "Generate a QR containing an URL or Raw Data.",
+  "create.help": "Copy paste or type your URL",
 
   "nav.create": "Create",
   "nav.history": "History",
-  "nav.scan": "Scan",
-  "nav.upload": "Upload",
+  "nav.scan": "Camera",
+  "nav.upload": "Image",
 
   "header.title": "QRaw",
 
@@ -17,6 +17,7 @@ export default {
   "history.confirm": "Confirm",
   "history.subtitle": "QR History",
 
+  "scan.help": "Allow access to your camera.",
   "scan.camera.preview": "Tap to start",
   "scan.open.cam": "Open camera",
   "scan.close.cam": "Close camera",
@@ -29,10 +30,10 @@ export default {
   "scan.loading": "Accesing camera",
   "scan.subtitle": "Scan a QR",
 
-  "upload.subtitle": "Upload QR Image",
+  "upload.subtitle": "Scan a QR Image",
   "upload.discard": "Discard",
   "upload.open": "Open",
   "upload.nothing": "No scannable code found",
-  "upload.help1": "Choose and image containing a QR code.",
+  "upload.help1": "Select an image containing a code.",
   "upload.help2": "The code will be detected automatically.",
 }

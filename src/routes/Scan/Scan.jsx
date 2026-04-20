@@ -68,6 +68,8 @@ export default function Scan() {
             <button onClick={handleCloseCam}>{t("scan.close.cam")}</button>
           )}
         </section>
+        <hr />
+        <p>{t("scan.help")}</p>
       </main>
     </>
   );

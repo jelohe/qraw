@@ -1,13 +1,16 @@
 import { useLocalStorage } from '@uidotdev/usehooks'
 import en from './en';
 import es from './es';
-import tok from './tok';
 
 const DEFAULT_LANG = 'en';
 
 export default function useI18n() {
   const [lang, setLang] = useLocalStorage('lang', DEFAULT_LANG);
-  const translations = { en, es, tok };
+
+  // Reset old localStorage
+  if (lang === DEFAULT_LANG) setLang(DEFAULT_LANG);
+
+  const translations = { en, es };
 
   return {
     lang,
