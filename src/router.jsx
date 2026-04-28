@@ -2,6 +2,9 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router'
 
+import Header from '@/components/Header';
+import Layout from '@/Layout';
+
 import Scan from '@/routes/Scan';
 import Upload from '@/routes/Upload';
 import Create from '@/routes/Create';
@@ -14,11 +17,13 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Scan />} />
-        <Route path="/upload" element={<Upload />} />
-        <Route path="/create" element={<Create />} />
-        <Route path="/history" element={<History />} />
-        <Route path="*" element={<NotFound />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<Scan />} />
+          <Route path="/upload" element={<Upload />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/history" element={<History />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>
