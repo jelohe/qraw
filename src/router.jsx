@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router'
 
-import Header from '@/components/Header';
 import Layout from '@/Layout';
 
 import Scan from '@/routes/Scan';

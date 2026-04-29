@@ -51,7 +51,6 @@ body {
     border-right: var(--border);
 }
 
-/* HEADER */
 header {
     border: var(--border);
     border-top: 0;
@@ -150,7 +149,6 @@ header {
     );
 }
 
-/* NAV - BOTTOM */
 nav {
     display: flex;
     border-top: var(--border);
@@ -202,7 +200,6 @@ nav > a:hover .nav-icon {
     color: var(--bg);
 }
 
-/* MAIN - with bottom padding for fixed nav */
 main {
     flex: 1 1 auto;
     overflow-y: auto;
@@ -210,7 +207,6 @@ main {
     min-height: 0;
 }
 
-/* SECTION (no footer) */
 section {
     display: flex;
     gap: 0 .5em;
@@ -231,7 +227,6 @@ p {
     line-height: 1.6;
 }
 
-/* SCANNER */
 .scanner {
     aspect-ratio: 1;
     align-items: center;
@@ -448,9 +443,8 @@ mark {
 }
 section > svg {
     width: 100%;
-    border: var(--border);
     padding: 14px;
-    background: var(--bg-dark);
+    background: var(--fg);
 }
 
 .detected-box h2 {
