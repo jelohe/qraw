@@ -21,32 +21,55 @@ export default function Create() {
     if (inputRef.current) inputRef.current.value = '';
   }
 
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' && !data) {
+      handleCreate();
+    }
+  }
+
   return (
     <main>
       <h2>{t("create.subtitle")}</h2>
-      <div className="create-input-group">
-        <label className="input-label">[DATA]</label>
-        <input ref={inputRef} type="text" placeholder={t("create.placeholder")} />
-      </div>
-      {data && (
-        <>
-          <section className="qr-output">
-            <QRCode value={data} />
-          </section>
-          <br />
-        </>
+
+      {!data && (
+        <div className="terminal-panel">
+          <div className="terminal-panel__header">
+            <span>[DATA IN]</span>
+            <span className="terminal-panel__status">● IDLE</span>
+          </div>
+          <div className="terminal-panel__body">
+            <div className="terminal-input-group">
+              <span className="terminal-prompt">&gt;</span>
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder={t("create.placeholder")}
+                onKeyDown={handleKeyDown}
+              />
+            </div>
+            <button onClick={handleCreate}>[&#x23CE; {t("create.create")}]</button>
+          </div>
+        </div>
       )}
-      <section>
-        {!data && (
-          <button onClick={handleCreate}>[{t("create.create")}]</button>
-        )}
-        {data && (
-          <button onClick={handleDiscard} className="markedButton">[{t("create.discard")}]</button>
-        )}
-      </section>
-      <br />
+
+      {data && (
+        <div className="terminal-panel">
+          <div className="terminal-panel__header">
+            <span>[DATA ENCODED]</span>
+            <span className="terminal-panel__status terminal-panel__status--ready">● READY</span>
+          </div>
+          <div className="terminal-panel__body">
+            <p className="terminal-data-display">{data}</p>
+            <section className="qr-output">
+              <QRCode value={data} />
+            </section>
+            <button onClick={handleDiscard} className="markedButton">[&#x2717; {t("create.discard")}]</button>
+          </div>
+        </div>
+      )}
+
       <hr />
-      <p>{t("create.help")}</p>
+      <p className="info-plate">{t("create.help")}</p>
     </main>
   );
 }
