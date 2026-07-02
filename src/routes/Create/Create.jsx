@@ -1,7 +1,6 @@
 import useI18n from '@/useI18n';
 import useHistory from '@/useHistory';
 import { useState, useRef } from 'react';
-import Header from '@/components/Header';
 import QRCode from 'react-qr-code';
 
 export default function Create() {
@@ -11,41 +10,43 @@ export default function Create() {
   const { t } = useI18n();
 
   function handleCreate() {
-    const createdData = inputRef.current.value;
+    const createdData = inputRef.current.value.trim();
+    if (!createdData) return;
     setData(createdData);
     add(createdData);
   }
 
   function handleDiscard() {
     setData(null);
+    if (inputRef.current) inputRef.current.value = '';
   }
 
   return (
-    <>
-      <Header />
-      <main>
-        <h2>{t("create.subtitle")}</h2>
+    <main>
+      <h2>{t("create.subtitle")}</h2>
+      <div className="create-input-group">
+        <label className="input-label">[DATA]</label>
         <input ref={inputRef} type="text" placeholder={t("create.placeholder")} />
-        {data && (
-          <>
-            <section>
-              <QRCode value={data} />
-            </section>
-            <br />
-          </>
+      </div>
+      {data && (
+        <>
+          <section className="qr-output">
+            <QRCode value={data} />
+          </section>
+          <br />
+        </>
+      )}
+      <section>
+        {!data && (
+          <button onClick={handleCreate}>[{t("create.create")}]</button>
         )}
-        <section>
-          {!data && (
-            <button onClick={handleCreate}>{t("create.create")}</button>
-          )}
-          {data && (
-            <button onClick={handleDiscard}>{t("create.discard")}</button>
-          )}
-        </section>
-        <br />
-        <hr />
-        <p>{t("create.help")}</p>
-      </main>
-    </>
+        {data && (
+          <button onClick={handleDiscard} className="markedButton">[{t("create.discard")}]</button>
+        )}
+      </section>
+      <br />
+      <hr />
+      <p>{t("create.help")}</p>
+    </main>
   );
 }

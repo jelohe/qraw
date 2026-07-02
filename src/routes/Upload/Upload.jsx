@@ -1,7 +1,6 @@
 import { useState, useRef } from 'react';
 import useI18n from '@/useI18n';
 import useHistory from '@/useHistory';
-import Header from '@/components/Header';
 import camera from '@/components/Scanner/camera';
 
 export default function Upload() {
@@ -34,32 +33,37 @@ export default function Upload() {
   }
 
   return (
-    <>
-      <Header />
-      <main>
-        <h2>{t("upload.subtitle")}</h2>
-        {!image && (
-          <>
-            <input type="file" onChange={handleChange} accept="image/*" />
-            <hr />
-            <p>{t("upload.help1")}</p>
-            <p>{t("upload.help2")}</p>
-          </>
-        )}
-        {image && (
-          <>
-            <img ref={imageEl} src={image} />
-            <hr />
-            {data && <p>{data}</p>}
-            {!data && <p>{t("upload.nothing")}</p>}
-            <br />
-            <section>
-              <button onClick={handleDiscard}>{t("upload.discard")}</button>
-              {data && <button onClick={handleOpen}>{t("upload.open")}</button>}
-            </section>
-          </>
-        )}
-      </main>
-    </>
+    <main>
+      <h2>{t("upload.subtitle")}</h2>
+      {!image && (
+        <>
+          <div className="upload-zone">
+            <input type="file" onChange={handleChange} accept="image/*" id="file-input" />
+            <label htmlFor="file-input" className="upload-label">
+              <span className="upload-icon">[DROP]</span>
+              <span>{t("upload.help1")}</span>
+            </label>
+          </div>
+        </>
+      )}
+      {image && (
+        <>
+          <img ref={imageEl} src={image} />
+          <hr />
+          {data && (
+            <div className="detected-box">
+              <h2>[!] {t("scan.found")}</h2>
+              <a href={data} target="_blank">{data}</a>
+            </div>
+          )}
+          {!data && <p className="no-data">[!] {t("upload.nothing")}</p>}
+          <br />
+          <section>
+            <button onClick={handleDiscard}>[{t("upload.discard")}]</button>
+            {data && <button onClick={handleOpen} className="markedButton">[{t("upload.open")}]</button>}
+          </section>
+        </>
+      )}
+    </main>
   );
 }
