@@ -77,14 +77,19 @@ export default function Scan() {
     setFileData(null);
     setFileScanning(true);
 
-    camera.scan(file).then(scanned => {
-      setFileScanning(false);
-      if (scanned && scanned.length) {
-        const { rawValue } = scanned[0];
-        setFileData(rawValue);
-        add(rawValue);
-      }
-    }).catch(() => setFileScanning(false));
+    const img = new Image();
+    img.onload = () => {
+      camera.scan(img).then(scanned => {
+        setFileScanning(false);
+        if (scanned && scanned.length) {
+          const { rawValue } = scanned[0];
+          setFileData(rawValue);
+          add(rawValue);
+        }
+      }).catch(() => setFileScanning(false));
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
   }
   const handleFileDiscard = () => {
     setFileImage(null);
@@ -145,7 +150,7 @@ export default function Scan() {
                       <a href={fileData} target="_blank">{fileData}</a>
                     </div>
                   )}
-                  {!fileScanning && !fileData && <p className="no-data">[!] {t("upload.nothing")}</p>}
+                  {!fileScanning && !fileData && <div className="error-box"><mark>[!] {t("upload.nothing")}</mark></div>}
                 </>
               )}
             </>
