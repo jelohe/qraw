@@ -4,7 +4,7 @@ import Nav from '@/components/Nav';
 import useI18n from '@/useI18n';
 
 export default function Layout() {
-  const { lang, setLang, LangSelector } = useI18n();
+  const { lang, setLang, LangSelector, t } = useI18n();
   const [theme, setTheme] = useState(() => {
     try {
       const stored = localStorage.getItem('theme');
@@ -28,8 +28,8 @@ export default function Layout() {
         <span className="header-controls">
           <span className="header-theme">
             <select value={theme} onChange={e => setTheme(e.target.value)}>
-              <option value="light">☼</option>
-              <option value="dark">☾</option>
+              <option value="light">{t("theme.light")}</option>
+              <option value="dark">{t("theme.dark")}</option>
             </select>
           </span>
           <span className="header-lang">

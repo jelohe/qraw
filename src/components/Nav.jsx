@@ -10,10 +10,7 @@ export default function Nav() {
         <span className="nav-icon">[&gt;</span>
         <span className="nav-text">{t('nav.scan')}</span>
       </NavLink>
-      <NavLink to="/upload" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
-        <span className="nav-icon">[^</span>
-        <span className="nav-text">{t('nav.upload')}</span>
-      </NavLink>
+
       <NavLink to="/create" className={({isActive}) => isActive ? "nav-item active" : "nav-item"}>
         <span className="nav-icon">[+]</span>
         <span className="nav-text">{t('nav.create')}</span>

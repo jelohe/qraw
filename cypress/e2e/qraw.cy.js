@@ -12,11 +12,16 @@ describe('QRaw', () => {
     cy.get('.terminal-panel').should('exist');
     cy.contains('[SCANNER]').should('exist');
     cy.get('.header-controls select').should('have.length', 2);
+    cy.contains('[≡ MANUAL]').should('exist');
   });
 
-  it('navigates to Upload without errors', () => {
-    cy.visit('https://localhost:3000/upload');
-    cy.contains('[UPLOAD]').should('exist');
+  it('toggles to MANUAL mode without errors', () => {
+    cy.visit('https://localhost:3000');
+    cy.contains('[≡ MANUAL]').click();
+    cy.contains('[◀ SCAN]').should('exist');
+    cy.contains('[DROP]').should('exist');
+    cy.contains('[◀ SCAN]').click();
+    cy.contains('[≡ MANUAL]').should('exist');
   });
 
   it('navigates to Create without errors', () => {
